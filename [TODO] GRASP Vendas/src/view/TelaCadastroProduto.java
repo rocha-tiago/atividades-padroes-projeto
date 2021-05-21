@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ControllerProduto;
 import model.ItemVenda;
 import model.Produto;
 import model.Venda;
@@ -35,7 +36,11 @@ public class TelaCadastroProduto {
 	private JTextField fieldPreco = new JTextField();
 
 	private JButton buttonSalvar = new JButton("Registrar venda de somente 1 produto!");
+	
 
+	private ControllerProduto controllerProduto;
+	
+	
 	public TelaCadastroProduto() {
 		janela.setTitle("Cadastro de Produto");
 
@@ -58,6 +63,11 @@ public class TelaCadastroProduto {
 		instalarExit();
 		instalarButtonSalvar();
 
+	}
+
+	public TelaCadastroProduto(ControllerProduto controllerProduto) {
+		this.controllerProduto = controllerProduto;
+		
 	}
 
 	private void instalarExit() {
@@ -84,6 +94,11 @@ public class TelaCadastroProduto {
 				cor, mensagem));
 		janela.pack();
 	}
+	
+	
+	public JButton getButtonSalvar() {
+		return this.buttonSalvar;
+	}
 
 	private void instalarButtonSalvar() {
 		buttonSalvar.addMouseListener(new MouseAdapter() {
@@ -95,36 +110,28 @@ public class TelaCadastroProduto {
 				 * neste tratador de listener, nas linhas que se seguem.
 				 * 
 				 */
+				
 				String nomeProduto = fieldNome.getText();
 				if (nomeProduto == null || nomeProduto.isEmpty()) {
 					exibirMensagem("Informe um nome para o produto", true);
 					return;
 				}
 
-				float valorProduto = 0;
+				int valorProduto = 0;
 				try {
 					Float.parseFloat(fieldPreco.getText());
 				} catch (Exception exception) {
 					exibirMensagem("Preco deve usar ponto para separar casas decimais e conter somente numeros", true);
 					return;
 				}
-
-
-				Produto produto = new Produto();
-				produto.setNome(nomeProduto);
-				produto.setPreco(valorProduto);
-
-				int quantidade = 1;
 				
-				Venda venda = new Venda();
-				venda.setData(Calendar.getInstance().getTime());					
-				venda.addItemVenda(produto, quantidade);
-
-				if (venda.enviarNotaFiscalPorEmail()) {
+															
+				if (controllerProduto.salvarProduto(nomeProduto,valorProduto)) {
 					exibirMensagem("Venda registrada com sucesso!", false);
 				} else {
 					exibirMensagem("Erro ao registrar venda (nao foi possivel contatar o servidor de email para envio da nota fiscal ou login e senha do servidor estao incorretos)", true);
 				}
+				
 			}
 
 		});
