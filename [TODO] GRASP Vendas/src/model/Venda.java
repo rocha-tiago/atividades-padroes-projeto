@@ -37,9 +37,12 @@ public class Venda {
 	 * 
 	 * 3. Anote qual o principio GRASP que você considerou, caso tenha refatorado
 	 * este codigo e explique como sua solucao trouxe beneficios ao design.
+	 * 
+	 * R. Creator
 	 */
-	public void addItemVenda(ItemVenda itemVenda) {
-		itensVenda.add(itemVenda);		
+	
+	public void addItemVenda(Produto produto, int quantidade) {		
+		itensVenda.add(new ItemVenda(produto,quantidade));		
 	}
 
 	public float getTotal() {
@@ -93,8 +96,8 @@ public class Venda {
 		String mensagem = "Valor: " + this.getTotal();
 
 		//TODO Coloque seu e-mail@academico.ifpb.edu.br e senha aqui para testar
-		String email = "";
-		String senha = "";
+		String email = "rocha.tiago@academico.ifpb.edu.br";
+		String senha = "123";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");

@@ -109,17 +109,16 @@ public class TelaCadastroProduto {
 					return;
 				}
 
+
 				Produto produto = new Produto();
 				produto.setNome(nomeProduto);
 				produto.setPreco(valorProduto);
 
+				int quantidade = 1;
+				
 				Venda venda = new Venda();
-				venda.setData(Calendar.getInstance().getTime());
-
-				ItemVenda itemVenda = new ItemVenda();
-				itemVenda.setProduto(produto);	
-				itemVenda.setQuantidade(1);
-				venda.addItemVenda(itemVenda);
+				venda.setData(Calendar.getInstance().getTime());					
+				venda.addItemVenda(produto, quantidade);
 
 				if (venda.enviarNotaFiscalPorEmail()) {
 					exibirMensagem("Venda registrada com sucesso!", false);
