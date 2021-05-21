@@ -48,7 +48,7 @@ public class Venda {
 	public float getTotal() {
 		float total = 0;
 		for (ItemVenda itemVenda : this.itensVenda) {
-			total += getSubtotal(itemVenda);
+			total += itemVenda.getSubtotal();
 		}
 		return total;
 	}
@@ -67,10 +67,12 @@ public class Venda {
 	 * 3. Anote qual o principio GRASP que você considerou, caso tenha refatorado
 	 * este codigo e explique como sua solucao trouxe beneficios ao design.
 	 * Na verdade seriam 2 principios aqui, ok?...
+	 * 
+	 * R. Especialista, Baixo acoplamento
+	 * 
+	 * Metodo movido para ItemVenda (getSubTotal())
 	 */
-	private float getSubtotal(ItemVenda itemVenda) {
-		return itemVenda.getProduto().getPreco() * itemVenda.getQuantidade();
-	}
+
 
 	/**
 	 * TODO 03
@@ -97,7 +99,7 @@ public class Venda {
 
 		//TODO Coloque seu e-mail@academico.ifpb.edu.br e senha aqui para testar
 		String email = "rocha.tiago@academico.ifpb.edu.br";
-		String senha = "123";
+		String senha = "1234";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
