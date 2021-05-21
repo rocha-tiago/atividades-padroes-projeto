@@ -91,45 +91,11 @@ public class Venda {
 	 * 3. Anote qual o principio GRASP que vocÃª considerou, caso tenha refatorado
 	 * este codigo e explique como sua solucao trouxe beneficios ao design.
 	 * 
+	 *  R. Alta coesão
 	 *  
+	 *  enviarNotaFiscalPorEmail movido para ... 
 	 */
-	public boolean enviarNotaFiscalPorEmail() {
-		String assunto = "VendaJava: " + this.getData();
-		String mensagem = "Valor: " + this.getTotal();
-
-		//TODO Coloque seu e-mail@academico.ifpb.edu.br e senha aqui para testar
-		String email = "rocha.tiago@academico.ifpb.edu.br";
-		String senha = "1234";
-
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.socketFactory.class",
-				"javax.net.ssl.SSLSocketFactory");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.port", "465");
-
-		Session session = Session.getDefaultInstance(props,
-				new javax.mail.Authenticator() {
-			protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-				return new javax.mail.PasswordAuthentication(email, senha);
-			}
-		});
-
-		try {
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("from@vendajava.pp.ads"));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(email));
-			message.setSubject(assunto);
-			message.setText(mensagem);
-
-			Transport.send(message);
-			return true;
-		} catch (MessagingException e) {
-			return false;
-		}
-	}
+	
 }
 
 
