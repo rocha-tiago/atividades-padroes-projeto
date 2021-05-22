@@ -6,18 +6,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Calendar;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import controller.ControllerProduto;
-import model.ItemVenda;
-import model.Produto;
-import model.Venda;
 
 public class TelaCadastroProduto {
 
@@ -59,10 +53,10 @@ public class TelaCadastroProduto {
 		janela.add(buttonSalvar, BorderLayout.PAGE_END);
 
 		janela.setResizable(false);
-
+		
 		instalarExit();
-		instalarButtonSalvar();
-
+		instalarButtonSalvar();	
+		exibir();
 	}
 
 	public TelaCadastroProduto(ControllerProduto controllerProduto) {

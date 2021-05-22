@@ -2,14 +2,6 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class Venda {
 
@@ -38,7 +30,7 @@ public class Venda {
 	 * 3. Anote qual o principio GRASP que você considerou, caso tenha refatorado
 	 * este codigo e explique como sua solucao trouxe beneficios ao design.
 	 * 
-	 * R. Creator
+	 * R. Creator, 
 	 */
 	
 	public void addItemVenda(Produto produto, int quantidade) {		
