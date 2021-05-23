@@ -33,9 +33,9 @@ public class TelaCadastroProduto {
 	
 
 	private ControllerProduto controllerProduto;
-	
-	
-	public TelaCadastroProduto() {
+
+	public TelaCadastroProduto(ControllerProduto controllerProduto) {
+		
 		janela.setTitle("Cadastro de Produto");
 
 		janela.add(labelMensagens, BorderLayout.PAGE_START);
@@ -57,10 +57,8 @@ public class TelaCadastroProduto {
 		instalarExit();
 		instalarButtonSalvar();	
 		exibir();
-	}
-
-	public TelaCadastroProduto(ControllerProduto controllerProduto) {
 		this.controllerProduto = controllerProduto;
+		
 		
 	}
 
